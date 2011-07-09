@@ -1,5 +1,6 @@
 module Dice
   srand Time.now.to_i
+
   def self.d20
     dice 20
   end

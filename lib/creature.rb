@@ -11,13 +11,36 @@ class Creature
     @int  = options[:int]  ||= 1
     @exp  = options[:exp]  ||= 0
     @lvl  = options[:lvl]  ||= 1
-    @hp = 2 * con + 1 * @str
+    @hp = 10 * @con
   end
 
   def attack enemy
-    damage = @str + @str * Dice::d3 - enemy.con * Dice::d3
-    enemy.hp =- damage
+    damage = @str + @str * Dice::d3
+    enemy.hp -= damage
     damage
   end
 
+  def is_alive?
+    @hp > 0
+  end
+
+  def is_dead?
+    @hp <= 0
+  end
+
+  def to_s
+    str = self.class.to_s + "\n" +
+    "#{@name} Level #{@lvl}\n"
+    if is_alive?
+      str += "HP  = #{@hp}\n"
+    else
+      str += "[DEAD]\n"
+    end
+    str += "EXP = #{@exp}\n" +
+    "STR = #{@str}\n" +
+    "CON = #{@con}\n" +
+    "DEX = #{@dex}\n" +
+    "INT = #{@int}"
+    str
+  end
 end
