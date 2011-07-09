@@ -4,12 +4,16 @@ require_relative 'lib/hero'
 require_relative 'lib/monster'
 
 conan = Hero.new :name => "Conan the barbarian", :str => 4, :con => 2
-stalker = Monster.new :name => "Stalker"
-snakelady = Monster.new :name => "Snake-Lady"
+
+enemies = []
+10.times do |i|
+    enemies << Monster.new(:name => "Enemy #{i}", :str => rand(3), :con => 1)
+end
+
 bodycount = 0
 
 begin
-    monstaRRR = stalker.clone
+    monstaRRR = enemies[rand enemies.length]
     Fight::fight conan, monstaRRR
     bodycount += 1 if monstaRRR.is_dead?
 end while conan.is_alive?
