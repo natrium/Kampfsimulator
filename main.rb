@@ -16,6 +16,9 @@ bodycount = 0
 begin
     monstaRRR = enemies.rand
     Fight::fight conan, monstaRRR
+    if conan.is_alive?
+        conan.gain_exp monstaRRR.xp
+    end
     bodycount += 1 if monstaRRR.is_dead?
 end while conan.is_alive?
 
