@@ -4,6 +4,11 @@ module Fight
         while hero.is_alive? && enemy.is_alive?
             yield hero, enemy
         end
+        
+        if hero.is_alive?
+          hero.gain_exp enemy.xp
+          hero.bodycount += 1
+        end
     end
 
     module Experience
