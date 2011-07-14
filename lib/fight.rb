@@ -14,7 +14,6 @@ module Fight
     module Experience
         module Source
             def xp
-                puts @lvl
                 @lvl
             end
         end
