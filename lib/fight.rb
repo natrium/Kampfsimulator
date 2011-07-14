@@ -19,7 +19,6 @@ module Fight
 
         module Receiver
             def gain_exp exp
-                puts "#{@exp} vs. #{exp}"
                 @exp += exp
                 while @exp > @lvl * 5
                     level_up

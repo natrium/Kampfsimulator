@@ -14,7 +14,7 @@ end
 bodycount = 0
 
 begin
-    monstaRRR = enemies.rand
+    monstaRRR = enemies.rand.clone
     Fight::fight conan, monstaRRR
     if conan.is_alive?
         conan.gain_exp monstaRRR.xp
