@@ -1,11 +1,8 @@
 module Fight
-    def self.fight fighter1, fighter2
-        while fighter1.is_alive? && fighter2.is_alive?
-          print fighter1.name + " attacks " + fighter2.name + " and does '"
-          print fighter1.attack(fighter2).to_s + "' damage\n"
-          print fighter2.name + " attacks " + fighter1.name + " and does '"
-          print fighter2.attack(fighter1).to_s + "' damage\n"
-          sleep 0.5
+    def self.fight hero, enemies, &block
+        enemy = enemies.rand.clone
+        while hero.is_alive? && enemy.is_alive?
+            yield hero, enemy
         end
     end
 
